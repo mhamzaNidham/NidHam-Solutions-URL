@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nidham Solutions LLC — Consulting & General Contracting</title>
+<meta name="description" content="Nidham Solutions LLC provides expert consulting, project management, construction, and general contracting services." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #102040;
+    --gold: #c8a96e;
+    --gold-light: #e2c99a;
+    --cream: #f5f2ec;
+    --text: #1a1a2e;
+    --muted: #5a6070;
+    --border: rgba(10,22,40,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,22,40,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(200,169,110,0.15);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .nav-mark {
+    width: 34px; height: 34px;
+    border: 1.5px solid var(--gold);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; font-weight: 600;
+    color: var(--gold); letter-spacing: -0.5px;
+  }
+  .nav-wordmark {
+    font-size: 14px; font-weight: 500;
+    color: #e8e0d0; letter-spacing: 0.3px;
+  }
+  .nav-links {
+    display: flex; gap: 32px; list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px; color: #8a9ab5;
+    text-decoration: none; letter-spacing: 0.3px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    font-size: 13px; font-weight: 500;
+    padding: 8px 20px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--navy); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    padding: 120px 5% 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg-ring {
+    position: absolute;
+    border: 1px solid rgba(200,169,110,0.08);
+    border-radius: 50%;
+    top: 50%; left: 55%;
+    transform: translate(-50%, -50%);
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 680px; }
+  .hero-eyebrow {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px;
+  }
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 6vw, 72px);
+    font-weight: 400; line-height: 1.1;
+    color: #fff; margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+  .hero-headline em {
+    color: var(--gold); font-style: normal;
+  }
+  .hero-body {
+    font-size: 17px; color: #8a9ab5;
+    line-height: 1.75; max-width: 520px; margin-bottom: 44px;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    padding: 14px 32px;
+    background: var(--gold); color: var(--navy);
+    font-size: 14px; font-weight: 600;
+    border-radius: 4px; text-decoration: none;
+    transition: opacity 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-ghost {
+    padding: 14px 32px;
+    border: 1px solid rgba(200,169,110,0.35);
+    color: #b0bcc9;
+    font-size: 14px; font-weight: 400;
+    border-radius: 4px; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 36px 5%;
+    display: flex; justify-content: center; gap: 64px; flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px; font-weight: 600;
+    color: var(--navy); line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 12px; color: var(--muted);
+    letter-spacing: 0.5px; text-transform: uppercase;
+  }
+
+  /* SERVICES */
+  .services {
+    padding: 100px 5%;
+    background: #fff;
+  }
+  .section-label {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 400; color: var(--navy);
+    margin-bottom: 16px; line-height: 1.2;
+  }
+  .section-sub {
+    font-size: 16px; color: var(--muted);
+    max-width: 520px; margin-bottom: 56px; line-height: 1.7;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+  }
+  .service-card {
+    padding: 40px 36px;
+    background: var(--cream);
+    position: relative;
+    transition: background 0.25s;
+  }
+  .service-card:hover { background: #ede9e1; }
+  .service-icon {
+    width: 44px; height: 44px;
+    border: 1.5px solid var(--gold);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 24px;
+    color: var(--gold); font-size: 20px;
+  }
+  .service-name {
+    font-size: 17px; font-weight: 500;
+    color: var(--navy); margin-bottom: 10px;
+  }
+  .service-desc {
+    font-size: 14px; color: var(--muted); line-height: 1.7;
+  }
+  .service-card::after {
+    content: ''; position: absolute;
+    bottom: 0; left: 36px; right: 36px;
+    height: 1.5px; background: var(--gold);
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .service-card:hover::after { opacity: 1; }
+
+  /* ABOUT */
+  .about {
+    background: var(--navy);
+    padding: 100px 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-text .section-label { color: var(--gold); }
+  .about-text .section-title { color: #fff; }
+  .about-body {
+    font-size: 15px; color: #8a9ab5;
+    line-height: 1.8; margin-bottom: 28px;
+  }
+  .about-values {
+    display: flex; flex-direction: column; gap: 16px; margin-top: 40px;
+  }
+  .value-item {
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .value-dot {
+    width: 6px; height: 6px;
+    background: var(--gold); border-radius: 50%;
+    margin-top: 7px; flex-shrink: 0;
+  }
+  .value-text {
+    font-size: 14px; color: #8a9ab5; line-height: 1.6;
+  }
+  .value-text strong { color: #c8c0b0; font-weight: 500; }
+
+  .about-callout {
+    background: rgba(200,169,110,0.07);
+    border: 1px solid rgba(200,169,110,0.2);
+    border-radius: 12px;
+    padding: 40px 36px;
+  }
+  .callout-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 400; line-height: 1.4;
+    color: #e8e0d0; margin-bottom: 28px;
+  }
+  .callout-attr {
+    font-size: 13px; color: var(--gold);
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+
+  /* WHY US */
+  .why {
+    padding: 100px 5%; background: #fff;
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px; margin-top: 56px;
+  }
+  .why-item { display: flex; flex-direction: column; gap: 12px; }
+  .why-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px; font-weight: 600;
+    color: var(--cream); line-height: 1;
+  }
+  .why-title {
+    font-size: 15px; font-weight: 500; color: var(--navy);
+  }
+  .why-desc {
+    font-size: 14px; color: var(--muted); line-height: 1.7;
+  }
+
+  /* CONTACT */
+  .contact {
+    background: var(--cream);
+    padding: 100px 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .contact-info .section-title { margin-bottom: 32px; }
+  .contact-detail {
+    display: flex; gap: 16px; align-items: center;
+    margin-bottom: 20px;
+  }
+  .contact-icon {
+    width: 40px; height: 40px;
+    background: var(--navy);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-size: 16px; flex-shrink: 0;
+  }
+  .contact-label {
+    font-size: 11px; color: var(--muted);
+    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 2px;
+  }
+  .contact-value {
+    font-size: 15px; color: var(--navy); font-weight: 400;
+    text-decoration: none;
+  }
+  .contact-value:hover { color: var(--gold); }
+
+  /* FORM */
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  label {
+    font-size: 12px; font-weight: 500;
+    color: var(--muted); letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  input, textarea, select {
+    padding: 12px 14px;
+    border: 1px solid rgba(10,22,40,0.15);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: var(--text);
+    background: #fff;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--gold);
+  }
+  textarea { min-height: 110px; resize: vertical; }
+  .btn-submit {
+    padding: 14px 32px;
+    background: var(--navy); color: #fff;
+    border: none; border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; font-weight: 500;
+    cursor: pointer; letter-spacing: 0.3px;
+    transition: background 0.2s;
+    align-self: flex-start;
+  }
+  .btn-submit:hover { background: var(--navy-mid); }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(200,169,110,0.15);
+    padding: 32px 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-copy {
+    font-size: 13px; color: #5a6070;
+  }
+  .footer-tagline {
+    font-size: 13px; color: #5a6070;
+    font-style: italic;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .about, .contact {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .form-row { grid-template-columns: 1fr; }
+    .stats-bar { gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-mark-svg" style="width:44px;height:28px;display:flex;align-items:center;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 52" width="44" height="28" aria-hidden="true">
+        <rect x="0" y="1" width="9" height="48" fill="#c8a96e"/>
+        <rect x="26" y="1" width="9" height="48" fill="#c8a96e"/>
+        <rect x="0" y="1" width="35" height="7" fill="#c8a96e"/>
+        <rect x="9" y="8" width="8" height="8" fill="#c8a96e"/>
+        <rect x="17" y="16" width="9" height="8" fill="#c8a96e"/>
+        <rect x="0" y="43" width="35" height="7" fill="#c8a96e"/>
+        <rect x="40" y="1" width="30" height="7" fill="#c8a96e" rx="2"/>
+        <rect x="40" y="15" width="20" height="6" fill="#c8a96e" rx="1"/>
+        <rect x="50" y="21" width="20" height="6" fill="#c8a96e" rx="1"/>
+        <rect x="40" y="43" width="30" height="7" fill="#c8a96e" rx="2"/>
+        <rect x="40" y="1" width="8" height="21" fill="#c8a96e"/>
+        <rect x="62" y="21" width="8" height="29" fill="#c8a96e"/>
+      </svg>
+    </div>
+    <span class="nav-wordmark">Nidham Solutions</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-ring" style="width:600px;height:600px;"></div>
+  <div class="hero-bg-ring" style="width:900px;height:900px;"></div>
+  <div class="hero-bg-ring" style="width:1200px;height:1200px;"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Nidham Solutions LLC &nbsp;·&nbsp; DMV Region &amp; Nationwide</p>
+    <h1 class="hero-headline">
+      Structured Solutions.<br />
+      <em>Built to Last.</em>
+    </h1>
+    <p class="hero-body">
+      From strategic consulting and project management to construction oversight and general contracting — we bring order, expertise, and accountability to every engagement. Proudly serving the DC, Maryland, and Virginia region, with remote project support available nationwide.
+    </p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Our Services</a>
+      <a href="#contact" class="btn-ghost">Start a Conversation</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Client Commitment</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">3</div>
+    <div class="stat-label">Core Disciplines</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">DMV</div>
+    <div class="stat-label">DC · Maryland · Virginia</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">LLC</div>
+    <div class="stat-label">Fully Incorporated</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <p class="section-label">What We Do</p>
+  <h2 class="section-title">End-to-End Project Support</h2>
+  <p class="section-sub">We operate across the full project lifecycle — from strategy and planning through construction and delivery.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">&#9670;</div>
+      <h3 class="service-name">Business Consulting</h3>
+      <p class="service-desc">Strategic advisory services that help organizations identify opportunities, streamline operations, and make confident decisions at every stage of growth.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#9671;</div>
+      <h3 class="service-name">Project Management</h3>
+      <p class="service-desc">Structured oversight from initiation to closeout. We define scope, control timelines, manage stakeholders, and deliver results on time and within budget.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#9632;</div>
+      <h3 class="service-name">Construction Support</h3>
+      <p class="service-desc">On-the-ground coordination and quality assurance throughout the construction process, ensuring plans translate into well-executed outcomes.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#9633;</div>
+      <h3 class="service-name">General Contracting</h3>
+      <p class="service-desc">Full general contracting services — subcontractor coordination, procurement, scheduling, and site management for commercial and residential projects.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-text">
+    <p class="section-label">About Us</p>
+    <h2 class="section-title" style="color:#fff;">A Firm Built on<br />Accountability</h2>
+    <p class="about-body">
+      Nidham Solutions LLC was founded on the belief that clients deserve a single, trusted partner — one capable of spanning the full continuum from strategic planning to physical construction.
+    </p>
+    <p class="about-body">
+      Led by Muhammad Hamza, our team brings disciplined thinking, hands-on experience, and a commitment to transparency that sets us apart.
+    </p>
+    <div class="about-values">
+      <div class="value-item">
+        <div class="value-dot"></div>
+        <p class="value-text"><strong>Clarity.</strong> Every project begins with a clear scope, defined milestones, and agreed expectations.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-dot"></div>
+        <p class="value-text"><strong>Integrity.</strong> We report progress honestly and raise issues proactively — never after the fact.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-dot"></div>
+        <p class="value-text"><strong>Execution.</strong> Strategy without delivery is just conversation. We build things.</p>
+      </div>
+    </div>
+  </div>
+  <div class="about-callout">
+    <p class="callout-quote">"Nidham" — Arabic for order, system, and structured discipline. That's not just our name. It's how we work.</p>
+    <p class="callout-attr">Muhammad Hamza — CEO, Nidham Solutions LLC</p>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <p class="section-label">Why Nidham</p>
+  <h2 class="section-title">The Difference Is in the Details</h2>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-num">01</div>
+      <h3 class="why-title">Single Point of Accountability</h3>
+      <p class="why-desc">One firm, one relationship. No finger-pointing between your consultant and your contractor.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-num">02</div>
+      <h3 class="why-title">Strategy Meets Execution</h3>
+      <p class="why-desc">We understand both the boardroom and the job site — and we bridge the two effectively.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-num">03</div>
+      <h3 class="why-title">Transparent Communication</h3>
+      <p class="why-desc">Regular updates, clear reporting, and direct access to leadership throughout your project.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-num">04</div>
+      <h3 class="why-title">Local Roots, Broad Reach</h3>
+      <p class="why-desc">Maryland-based and nationally capable. We know the local landscape and the wider market.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- SERVICE AREA -->
+<section style="background:#0a1628; padding:80px 5%; text-align:center;">
+  <p style="font-size:11px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#c8a96e;margin-bottom:12px;">Where We Work</p>
+  <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,44px);font-weight:400;color:#fff;margin-bottom:16px;">DMV Region &amp; Beyond</h2>
+  <p style="font-size:16px;color:#8a9ab5;max-width:560px;margin:0 auto 48px;line-height:1.75;">
+    Headquartered in Maryland, we serve clients throughout DC, Maryland, and Virginia — and extend full consulting and project management support to clients anywhere in the country remotely.
+  </p>
+  <div style="display:flex;justify-content:center;gap:40px;flex-wrap:wrap;">
+    <div style="text-align:center;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:36px;color:#c8a96e;margin-bottom:6px;">DC</div>
+      <div style="font-size:12px;color:#5a6070;letter-spacing:1px;text-transform:uppercase;">Washington</div>
+    </div>
+    <div style="width:1px;background:rgba(200,169,110,0.15);height:60px;align-self:center;"></div>
+    <div style="text-align:center;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:36px;color:#c8a96e;margin-bottom:6px;">MD</div>
+      <div style="font-size:12px;color:#5a6070;letter-spacing:1px;text-transform:uppercase;">Maryland</div>
+    </div>
+    <div style="width:1px;background:rgba(200,169,110,0.15);height:60px;align-self:center;"></div>
+    <div style="text-align:center;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:36px;color:#c8a96e;margin-bottom:6px;">VA</div>
+      <div style="font-size:12px;color:#5a6070;letter-spacing:1px;text-transform:uppercase;">Virginia</div>
+    </div>
+    <div style="width:1px;background:rgba(200,169,110,0.15);height:60px;align-self:center;"></div>
+    <div style="text-align:center;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:36px;color:#c8a96e;margin-bottom:6px;">&#127758;</div>
+      <div style="font-size:12px;color:#5a6070;letter-spacing:1px;text-transform:uppercase;">Remote — Nationwide</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-info">
+    <p class="section-label">Contact</p>
+    <h2 class="section-title">Let's Talk About Your Project</h2>
+    <div class="contact-detail">
+      <div class="contact-icon">&#9990;</div>
+      <div>
+        <div class="contact-label">Phone</div>
+        <a href="tel:4438898146" class="contact-value">443-889-8146</a>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div class="contact-icon">&#9993;</div>
+      <div>
+        <div class="contact-label">Email</div>
+        <a href="mailto:mhamza@nidhamsolutions.com" class="contact-value">mhamza@nidhamsolutions.com</a>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div class="contact-icon">&#9961;</div>
+      <div>
+        <div class="contact-label">Website</div>
+        <span class="contact-value">NidhamSolutions.com</span>
+      </div>
+    </div>
+    <div style="margin-top:32px; padding:24px; background:rgba(10,22,40,0.05); border-left:3px solid var(--gold); border-radius:0 6px 6px 0;">
+      <p style="font-size:14px; color:var(--muted); line-height:1.7;">We respond to all inquiries within one business day. For urgent matters, please call directly.</p>
+    </div>
+  </div>
+
+  <form class="contact-form" onsubmit="handleSubmit(event)">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" placeholder="John" required />
+      </div>
+      <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" placeholder="Smith" required />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="you@company.com" required />
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" placeholder="(555) 000-0000" />
+    </div>
+    <div class="form-group">
+      <label for="service">Service of Interest</label>
+      <select id="service">
+        <option value="">— Select a service —</option>
+        <option>Business Consulting</option>
+        <option>Project Management</option>
+        <option>Construction Support</option>
+        <option>General Contracting</option>
+        <option>Multiple Services</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="message">Project Overview</label>
+      <textarea id="message" placeholder="Tell us about your project, timeline, and goals..." required></textarea>
+    </div>
+    <button type="submit" class="btn-submit">Send Message &rarr;</button>
+    <div id="form-msg" style="display:none; font-size:14px; color:#1a6640; margin-top:4px;"></div>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-copy">&copy; 2025 Nidham Solutions LLC. All rights reserved.</p>
+  <p class="footer-tagline">Order in every project.</p>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const msg = document.getElementById('form-msg');
+  msg.style.display = 'block';
+  msg.textContent = 'Thank you! We\'ll be in touch within one business day.';
+  e.target.reset();
+}
+</script>
+</body>
+</html>
